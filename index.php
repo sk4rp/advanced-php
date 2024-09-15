@@ -1,10 +1,4 @@
 <?php
-function remove_meta_tags_and_titles($html) {
-    $html = preg_replace('/<meta[^>]*>/i', '', $html);
-    $html = preg_replace('/<title[^>]*>.*?<\/title>/i', '', $html);
-    return preg_replace('/\s+title="[^"]*"/i', '', $html);
-}
-
 $html = <<<HTML
 <html class="sb-init"><head>
 	<base href="/templates/modex/">
@@ -448,5 +442,5 @@ $html = <<<HTML
 <body></html>
 HTML;
 
-$cleanHtml = remove_meta_tags_and_titles($html);
-echo htmlspecialchars($cleanHtml);
+$iterator = new RemoveAttributes($html);
+echo implode('', $iterator);
