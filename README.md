@@ -7,7 +7,7 @@
 
 ## HTML-код
 
-Скачайте HTML-код из файла: [large_file.html](https://github.com/sk4rp/large-html/blob/main/large.html)
+Берётся из другого репозитория и считывается удалённо: [large_file.html](https://github.com/sk4rp/large-html/blob/main/large.html)
 
 ## Извлеченные мета теги
 
