@@ -3,13 +3,21 @@
 class RemoveAttributes implements Iterator
 {
     protected string $html;
+    protected string $processedHtml;
     protected int $position = 0;
     protected array $elements = [];
 
     public function __construct($html)
     {
         $this->html = $html;
-        $this->elements = preg_split('/(<meta[^>]*>|<title[^>]*>.*?<\/title>|\s+title="[^"]*")/i', $html, -1, PREG_SPLIT_DELIM_CAPTURE);
+
+        $this->processedHtml = preg_replace(
+            '/<meta[^>]*(name="description"|name="keywords")[^>]*>|<title[^>]*>.*?<\/title>/i',
+            '',
+            $html
+        );
+
+        $this->elements = str_split($this->processedHtml);
     }
 
     public function current(): mixed
